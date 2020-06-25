@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static.css/creditcss.css">
+
+    <title>Credit Management System</title>
+</head>
+<body>
+<div class="container-fluid main-head ">
+    <div class="container-fluid view-user text-center">
+        <button type="button" class="btn btn-large btn"><a href="/stock/stockin">STOCK IN</a></button>
+        <button type="button" class="btn btn-large btn"><a href="/stock/stockout">STOCK OUT</a></button>
+        <button type="button" class="btn btn-large btn"><a href="/stock/replacement">In Replacement</a></button>
+    </div>
+    <h1>
+        Stock Management
+    </h1>
+    <h3>PRODUCT REPLACEMENT</h3>
+
+</div>
+<div class="container-fluid view-user text-center">
+    <button type="button" class="btn btn-large"><h6 ></h6></button>
+</div>
+<div>
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-2">
+                <h5>New Product Details for Replacement</h5>
+            </div>
+            <div class="col-md-8">
+                <form action="/stock/replacement" id="replacement"  method="post" class="pt-2" >
+                    <div class="col-md-3">
+                        <label for="products">Choose to Transfer:</label>
+                        <select id="products" name="productName" th:form="replacement">
+                            <option th:each="userlist :${list}"th:text="${userlist}"></option>
+                        </select>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>
+                            buyer : <input type="text" name="buyer">
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>
+                            Quantity : <input type="text" name="quantity">
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>
+                            Method : <select id="replacementMethod" name="replacementMethod" th:form="replacement">
+                            <option>Replaced-from-Stock</option>
+                            <option>Replaced-by-repair</option>
+                        </select>
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>
+                            Date of Entry For Replacement: <input type="datetime-local" name="date">
+                        </label>
+                    </div>
+                    <div class="col-md-3">
+                        <label>
+                            Remarks : <input type="text" name="remark">
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Submit" >
+                    </div>
+                </form>
+                </form>
+
+                <div class="col-md-2">
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <footer class="home-footer">
+    </footer>
+</body>
+</html>
