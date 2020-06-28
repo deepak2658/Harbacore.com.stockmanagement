@@ -1,20 +1,19 @@
-package mainapp.demo.model;
+package stkmgt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ItemIn {
+public class ProductsIn {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private Integer idItemIn;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer seqNo;
     private String productName;
     private  Integer quantity;
     private String insertionDate;
@@ -22,6 +21,5 @@ public class ItemIn {
 
     @ManyToOne
     @JoinColumn(name = "productId")
-    private Product product;
-
+    private Products product;
 }

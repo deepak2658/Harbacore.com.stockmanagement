@@ -3,8 +3,8 @@ package mainapp.demo.model;
 import lombok.Data;
 
 @Data
-public class MainStockVO {
+public class ProductVo {
+    private Integer productId;
     private String productName;
-    private Integer quantity;
-    private String updateDate;
+    private String manufacturer;
 }

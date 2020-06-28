@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
@@ -13,21 +12,21 @@
     <title>Credit Management System</title>
 </head>
 <body>
-<div class="container-fluid main-head">
-    <h1>
-        Stock Management
-    </h1>
-
-</div>
 <div class="container-fluid view-user text-center">
-    <button type="button" class="btn btn-large btn"><a href="/stock/allproducts">Display All Products</a></button>
-    <button type="button" class="btn btn-large btn"><a href="/stock/stockin">STOCK IN</a></button>
-    <button type="button" class="btn btn-large btn"><a href="/stock/stockout">STOCK OUT</a></button>
-    <button type="button" class="btn btn-large btn"><a href="/stock/replacement">In Replacement</a></button>
+<button type="button" class="btn btn-large btn"><a href="/stock/allproducts">Display All Products</a></button>
+<button type="button" class="btn btn-large btn"><a href="/stock/stockin">STOCK IN</a></button>
+<button type="button" class="btn btn-large btn"><a href="/stock/stockout">STOCK OUT</a></button>
+<button type="button" class="btn btn-large btn"><a href="/stock/replacement">In Replacement</a></button>
 </div>
-<footer class="home-footer">
-    <div class="container-fluid text-center">
+<h1>List of Products In Stock</h1>
+<div class="container">
+    <div class="item" th:each="prod :${list}" >
+        <label>Product Name:<button class="id" th:text="${prod.productName}"> </button></label>
+        <label>Quantity In Stock: <button class="name" th:text="${prod.quantity}"></button></label>
+        <hr>
     </div>
-</footer>
+</div>
+
+
 </body>
 </html>

@@ -6,13 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface StockRepository extends JpaRepository<MainStock,Long> {
+public interface StockRepository extends JpaRepository<MainStock,String> {
 
     @Query("SELECT productName from MainStock ")
     List<String> getNames();
 
-    @Query("SELECT productName from MainStock where productName = :check")
-    List<String> checkName(List check);
+//    @Query("SELECT productName from MainStock where productName = :check")
+//    List<String> checkName(List check);
 
     MainStock findByProductName(String name);
 

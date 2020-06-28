@@ -1,10 +1,9 @@
-package mainapp.demo.model;
+package stkmgt.model;
 
 import lombok.Data;
 
 @Data
-public class ItemsOutVo {
-    private Integer idItemOut;
+public class ProductsOutVo {
     private String productName;
     private String date;
     private String Buyer;

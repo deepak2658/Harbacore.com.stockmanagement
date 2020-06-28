@@ -1,28 +1,27 @@
-package mainapp.demo.model;
+package stkmgt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ItemsOut {
+public class ProductReplace {
     @Id
-    @GeneratedValue
-    private Long idItemOut;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idItemReplace;
     private String productName;
-    private String date;
-    private String Buyer;
+    private String buyer;
     private Integer quantity;
+    private String date;
+    private String replacementMethod;
+    private String remark;
 
-    //relations
     @ManyToOne
     @JoinColumn(name = "productId")
-    private Product product;
+    private Products product;
 }

@@ -1,13 +1,11 @@
 package mainapp.demo.service;
 
-import mainapp.demo.dao.MaterialIn;
-import mainapp.demo.dao.MaterialOut;
-import mainapp.demo.dao.Replacement;
-import mainapp.demo.dao.StockRepository;
+import mainapp.demo.dao.*;
 import mainapp.demo.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -20,12 +18,15 @@ public class StockManagement {
     private Replacement replacement;
     @Autowired
     private StockRepository stockRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
+    //For in Class Use
 
     public Boolean checkName(List<String> productName) {
-        System.out.println((stockRepository.checkName(productName)));
-        System.out.println(productName);
-        return productName.equals(stockRepository.checkName(productName));
+//        System.out.println((stockRepository.checkName(productName)));
+//        System.out.println(productName);
+        return productName.equals(productRepository.checkName(productName));
     }
 
     public void updateMainStock(String productName, Integer quantity, String updateDate) {
@@ -37,16 +38,20 @@ public class StockManagement {
     }
 
     public void save(ItemInVO product) {
-        MainStock prod = new MainStock(null,product.getProductName(),product.getQuantity(),product.getInsertionDate());
+        Product product1 = new Product(null,product.getProductName());
+        MainStock prod = new MainStock(product.getProductName(),product.getQuantity(),product.getInsertionDate(),productRepository.findByProductName(product.getProductName()));
+        System.out.println(product1);
+        System.out.println(prod);
+        productRepository.save(product1);
         stockRepository.save(prod);
     }
 
     public List<String> listProductName() {
-        return stockRepository.getNames();
+        return productRepository.getNames();
     }
 
     public void addProductToItemIn(ItemInVO product) {
-        ItemIn prod = new ItemIn(null,product.getProductName(),product.getQuantity(),product.getInsertionDate(),product.getSeller());
+        ItemIn prod = new ItemIn(null,product.getProductName(),product.getQuantity(),product.getInsertionDate(),product.getSeller(),productRepository.findByProductName(product.getProductName()));
         materialIn.save(prod);
     }
 

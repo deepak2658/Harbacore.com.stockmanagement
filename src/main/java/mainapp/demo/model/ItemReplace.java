@@ -20,4 +20,8 @@ public class ItemReplace {
     private String date;
     private String replacementMethod;
     private String remark;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
 }

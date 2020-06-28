@@ -1,28 +1,22 @@
-package mainapp.demo.model;
+package stkmgt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ItemsOut {
+public class MainStock {
     @Id
-    @GeneratedValue
-    private Long idItemOut;
     private String productName;
-    private String date;
-    private String Buyer;
     private Integer quantity;
+    private String updateDate;
 
-    //relations
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "productId")
-    private Product product;
+    private Products product;
 }

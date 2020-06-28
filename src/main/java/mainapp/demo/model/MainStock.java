@@ -2,10 +2,7 @@ package mainapp.demo.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Date;
 
@@ -16,10 +13,14 @@ import java.util.Date;
 @Setter
 public class MainStock {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idMainStock;
     private String productName;
     private Integer quantity;
     private String updateDate;
+
+
+    //The relations
+    @OneToOne
+    @JoinColumn(name = "productId")
+    private Product product;
 
 }

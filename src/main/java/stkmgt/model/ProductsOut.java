@@ -1,28 +1,25 @@
-package mainapp.demo.model;
+package stkmgt.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ItemsOut {
+public class ProductsOut {
     @Id
-    @GeneratedValue
-    private Long idItemOut;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer seqNo;
     private String productName;
     private String date;
     private String Buyer;
     private Integer quantity;
 
-    //relations
     @ManyToOne
     @JoinColumn(name = "productId")
-    private Product product;
+    private Products product;
 }
